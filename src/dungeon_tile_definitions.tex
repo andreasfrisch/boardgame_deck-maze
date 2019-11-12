@@ -1,0 +1,94 @@
+% Sizes
+\pgfmathsetmacro{\spacesize}{2.25}
+\pgfmathsetmacro{\wallwidth}{0.1}
+\pgfmathsetmacro{\outerwallwidth}{0.3}
+\pgfmathsetmacro{\innerwallwidth}{0.15}
+\pgfmathsetmacro{\doorwidth}{\outerwallwidth+0.2}
+\pgfmathsetmacro{\iconsize}{1}
+\pgfmathsetmacro{\smalliconsize}{0.75}
+
+% Commands
+\newcommand{\basegrid}{
+	%outerborder
+	\draw[black, line width=\outerwallwidth cm] (0-0.5*\outerwallwidth,0-0.5*\outerwallwidth) rectangle
+	                                            (4*\spacesize+0.5*\outerwallwidth,4*\spacesize+0.5*\outerwallwidth);
+	%border
+	%\draw[gray, line width=\wallwidth cm] (0,0) rectangle
+	%                                      (4*\spacesize,4*\spacesize);
+	%horizontal lines
+	\draw[gray, line width=\wallwidth cm] (0,1*\spacesize) -- (4*\spacesize,1*\spacesize);
+	\draw[gray, line width=\wallwidth cm] (0,2*\spacesize) -- (4*\spacesize,2*\spacesize);
+	\draw[gray, line width=\wallwidth cm] (0,3*\spacesize) -- (4*\spacesize,3*\spacesize);
+	%vertical lines
+	\draw[gray, line width=\wallwidth cm] (1*\spacesize,0) -- (1*\spacesize,4*\spacesize);
+	\draw[gray, line width=\wallwidth cm] (2*\spacesize,0) -- (2*\spacesize,4*\spacesize);
+	\draw[gray, line width=\wallwidth cm] (3*\spacesize,0) -- (3*\spacesize,4*\spacesize);
+
+	%entry spot
+	\node[text width=\spacesize cm] at (1.5*\spacesize,0.35*\spacesize) {
+		\begin{center}
+			\includegraphics[width=\smalliconsize cm]{icons/arrow.png}
+		\end{center}
+	};
+	\draw[white, line width=\doorwidth cm] (1*\spacesize+0.5*\wallwidth,-0.5*\outerwallwidth) --
+	                                       (2*\spacesize-0.5*\wallwidth,-0.5*\outerwallwidth);
+	\draw[gray, line width=\wallwidth cm] (1*\spacesize+0.5*\wallwidth,-0.5*\wallwidth) --
+	                                      (2*\spacesize-0.5*\wallwidth,-0.5*\wallwidth);
+}
+
+\newcommand{\fillsquare}[2]{
+	\draw[black, fill=black] (#1*\spacesize,#2*\spacesize) rectangle (#1*\spacesize+\spacesize,#2*\spacesize+\spacesize);
+}
+
+\newcommand{\topdoor}{
+	\draw[white, line width=\doorwidth cm] (2*\spacesize+0.5*\wallwidth,4*\spacesize+0.5*\outerwallwidth) --
+	                                       (3*\spacesize-0.5*\wallwidth,4*\spacesize+0.5*\outerwallwidth);
+	\draw[gray, line width=\wallwidth cm] (2*\spacesize+0.5*\wallwidth,4*\spacesize+0.5*\wallwidth) --
+	                                      (3*\spacesize-0.5*\wallwidth,4*\spacesize+0.5*\wallwidth);
+}
+\newcommand{\rightdoor}{
+	\draw[white, line width=\doorwidth cm] (4*\spacesize+0.5*\outerwallwidth,1*\spacesize+0.5*\wallwidth) --
+	                                       (4*\spacesize+0.5*\outerwallwidth,2*\spacesize-0.5*\wallwidth);
+	\draw[gray, line width=\wallwidth cm] (4*\spacesize+0.5*\wallwidth,1*\spacesize+0.5*\wallwidth) --
+	                                      (4*\spacesize+0.5*\wallwidth,2*\spacesize-0.5*\wallwidth);
+}
+\newcommand{\leftdoor}{
+	\draw[white, line width=\doorwidth cm] (-0.5*\outerwallwidth,2*\spacesize+0.5*\wallwidth) --
+	                                       (-0.5*\outerwallwidth,3*\spacesize-0.5*\wallwidth);
+	\draw[gray, line width=\wallwidth cm] (-0.5*\wallwidth,2*\spacesize+0.5*\wallwidth) --
+	                                      (-0.5*\wallwidth,3*\spacesize-0.5*\wallwidth);
+}
+
+\newcommand{\drawicon}[3]{
+	\node[text width=\spacesize cm] at (#1*\spacesize+0.5*\spacesize,#2*\spacesize+0.5*\spacesize) {
+		\begin{center}
+			\includegraphics[width=\iconsize cm]{#3}
+		\end{center}
+	};
+}
+\newcommand{\drawtwoicons}[3]{
+	\node[text width=\spacesize cm] at (#1*\spacesize+0.5*\spacesize,#2*\spacesize+0.5*\spacesize) {
+		\begin{center}
+			\includegraphics[width=\smalliconsize cm]{#3}
+			\includegraphics[width=\smalliconsize cm]{#3}
+		\end{center}
+	};
+}
+\newcommand{\drawthreeicons}[3]{
+	\node[text width=\spacesize cm] at (#1*\spacesize+0.5*\spacesize,#2*\spacesize+0.5*\spacesize) {
+		\begin{center}
+			\includegraphics[width=\smalliconsize cm]{#3} \\
+			\includegraphics[width=\smalliconsize cm]{#3}
+			\includegraphics[width=\smalliconsize cm]{#3}
+		\end{center}
+	};
+}
+
+\newcommand{\leftinnerwall}[2]{
+	\draw[black, line width=\innerwallwidth cm] (#1*\spacesize-0.5*\innerwallwidth,#2*\spacesize+0.5*\wallwidth) rectangle
+	                                            (#1*\spacesize+0.5*\innerwallwidth,#2*\spacesize+\spacesize-0.5*\wallwidth);
+}
+\newcommand{\bottominnerwall}[2]{
+	\draw[black, line width=\innerwallwidth cm] (#1*\spacesize+0.5*\wallwidth,#2*\spacesize-0.5*\innerwallwidth) rectangle
+	                                            (#1*\spacesize+\spacesize-0.5*\wallwidth,#2*\spacesize+0.5*\innerwallwidth);
+}

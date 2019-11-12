@@ -1,0 +1,25 @@
+\documentclass[a4paper]{article}
+\input{libs.tex}
+\input{dungeon_tile_definitions.tex}
+
+\begin{document}
+\begin{center}
+\pagestyle{empty}
+\hyphenpenalty=10000
+
+\noindent
+\begin{tikzpicture}
+	\basegrid
+	\fillsquare{0}{3}
+	\topdoor
+	\leftdoor
+	\rightdoor
+	\drawtwoicons{1}{1}{icons/chest_gold.png}
+	\drawicon{2}{2}{icons/monster_gray.png}
+	\drawthreeicons{1}{2}{icons/monster_gray.png}
+	\leftinnerwall{1}{1}
+	\bottominnerwall{1}{1}
+\end{tikzpicture}%
+%TODO
+\end{center}
+\end{document}
